@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển Đổi Tiền Tệ</title>
+</head>
+
+<body>
+    <form>
+        <p>Amount</p>
+        <input id="amount" type="number">
+        <p>From Currency</p>
+        <select>
+            <option>VND</option>
+            <option>USD</option>
+        </select>
+        <p>To Currency</p>
+        <select>
+            <option>VND</option>
+            <option>USD</option>
+        </select>
+        <br> <br>
+        <button type="button" onclick="DoiTien()">Convert</button>
+        <br> <br>
+        <input id="result" type="text">
+    </form>
+    <script>
+        function DoiTien() {
+            let myInput = document.getElementById("amount").value;
+            let exchangeRate = 23.315;
+            let result = myInput / exchangeRate;
+            document.getElementById("result").value = "result:" + result;
+        }
+    </script>
+</body>
+
+</html>
