@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuyển Đổi Tiền Tệ</title>
+  
+</head>
+<body>
+  <label>From Currency</label>
+  <select id="from"> 
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+    <option value="GBP">BẢNG ANH (GBP)</option>
+  </select>
+  <br><br>
+  <label>To Currency</label>
+  <select id = "to"> 
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+    <option value="GBP">BẢNG ANH (GBP)</option>
+  </select>
+  <br><br>
+  <form>
+    <label>Amount</label>
+    <input type="number" id = "num">
+    <br><br>
+    <button type="button" onclick = "convert()">Convert</button>
+    <br>
+  </form>
+  
+  <script>
+
+    function convert() 
+    {
+      let amount = Number(document.getElementById("num").value)
+      
+      let fromIndex = document.getElementById("from").selectedIndex
+      let from = document.getElementsByTagName("option")[fromIndex].value
+
+      let toIndex = document.getElementById("to").selectedIndex
+      let to = document.getElementsByTagName("option")[toIndex].value
+
+      let result = amount;
+      let uSDVnd = 23056;
+      let gBPVnd = 32174;
+      let uSDGBP = 23056 / 32174;
+     
+      switch (from) 
+      {
+        case "VND":
+          switch (to) 
+          {
+            case "USD":
+              result = amount / uSDVnd;
+              break;
+            case "GBP":
+              result = amount / gBPVnd;
+          }
+          break;
+
+        case "USD":
+          switch (to) 
+          {
+            case "VND":
+              result = amount * uSDVnd;
+              break;
+            case "GBP":
+              result = amount * uSDGBP;
+          }
+          break;
+
+        case "GBP":
+          switch (to) 
+          {
+            case "VND":
+              result = amount * gPBVnd;
+              break;
+            case "USD":
+              result = amount / uSDGBP;
+          }
+      }
+      document.getElementById("result").innerHTML = amount + " " + from + " = " + result + " " + to
+    }
+  </script>
+
+  <p id = "result"></p>
+</body>
+</html>
